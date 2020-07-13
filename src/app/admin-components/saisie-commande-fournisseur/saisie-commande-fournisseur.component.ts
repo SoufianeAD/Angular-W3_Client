@@ -52,11 +52,7 @@ export class SaisieCommandeFournisseurComponent implements OnInit {
   }
 
   onArticles() {
-    alert(JSON.stringify(this.articles));
+    console.log(JSON.stringify(this.articles));
   } 
-
-  onFournisseurs() {
-    alert(JSON.stringify(this.fournisseurs));
-  }
 
 }

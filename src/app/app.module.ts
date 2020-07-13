@@ -15,6 +15,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { MagasinsService } from './services/magasins.service';
 import { ArticlesService } from './services/articles.service';
 import { FournisseursService } from './services/fournisseurs.service';
+import { ListArticlesComponent } from './modals/list-articles/list-articles.component';
+import { ListFournisseursComponent } from './modals/list-fournisseurs/list-fournisseurs.component';
 
 @NgModule({
   imports: [
@@ -25,17 +27,23 @@ import { FournisseursService } from './services/fournisseurs.service';
     NavbarModule,
     FooterModule,
     SidebarModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    ListArticlesComponent,
+    ListFournisseursComponent,
   ],
   providers: [
     MagasinsService,
     ArticlesService,
     FournisseursService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ListArticlesComponent,
+    ListFournisseursComponent
+  ]
 })
 export class AppModule { }
