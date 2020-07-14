@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { ArticlesService } from 'app/services/articles.service';
 import { Article } from 'app/models/Article.models';
 import { Subscription } from 'rxjs';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-articles',
@@ -13,7 +14,9 @@ export class ListArticlesComponent implements OnInit {
   articles: Article[] = [];
   articlesSubscription: Subscription;
 
-  constructor(public articlesService: ArticlesService) { }
+  constructor(public articlesService: ArticlesService,
+              @Inject(MAT_DIALOG_DATA)public data: any,
+              public dialogRef: MatDialogRef<ListArticlesComponent>) { }
 
   ngOnInit(): void {
      // Articles
@@ -23,6 +26,11 @@ export class ListArticlesComponent implements OnInit {
       }
     );
     this.articlesService.getAll();
+  }
+
+  onSelect(article: Article) {
+      this.data = article;
+      this.dialogRef.close({ event: 'close', data: article });
   }
 
 }

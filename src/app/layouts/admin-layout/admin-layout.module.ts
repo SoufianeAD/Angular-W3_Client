@@ -20,13 +20,14 @@ import { SaisieCommandeFournisseurComponent } from 'app/admin-components/saisie-
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    LbdModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(AdminLayoutRoutes),
+        FormsModule,
+        LbdModule,
+        NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
+        ReactiveFormsModule
+    ],
   declarations: [
     HomeComponent,
     UserComponent,

@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -17,6 +17,7 @@ import { ArticlesService } from './services/articles.service';
 import { FournisseursService } from './services/fournisseurs.service';
 import { ListArticlesComponent } from './modals/list-articles/list-articles.component';
 import { ListFournisseursComponent } from './modals/list-fournisseurs/list-fournisseurs.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   imports: [
@@ -28,6 +29,8 @@ import { ListFournisseursComponent } from './modals/list-fournisseurs/list-fourn
     FooterModule,
     SidebarModule,
     AppRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,

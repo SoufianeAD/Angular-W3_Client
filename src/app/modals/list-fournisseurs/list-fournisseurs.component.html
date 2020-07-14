@@ -10,7 +10,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of fournisseurs;">
+                    <tr *ngFor="let item of fournisseurs;" (click)="onSelect(item)">
                         <td>{{item.idFournisseur}}</td>
                         <td>{{item.nom}}</td>
                         <td>{{item.telephone}}</td>

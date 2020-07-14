@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { Fournisseur } from 'app/models/Fournisseur.models';
 import { Subscription } from 'rxjs';
 import { FournisseursService } from 'app/services/fournisseurs.service';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-fournisseurs',
@@ -13,7 +14,9 @@ export class ListFournisseursComponent implements OnInit {
   fournisseurs: Fournisseur[] = [];
   fournisseurSubscription: Subscription;
 
-  constructor(public fournisseurService: FournisseursService) { }
+  constructor(public fournisseurService: FournisseursService,
+              @Inject(MAT_DIALOG_DATA)public data: any,
+              public dialogRef: MatDialogRef<ListFournisseursComponent>) { }
 
   ngOnInit(): void {
     // Fournisseurs
@@ -23,6 +26,11 @@ export class ListFournisseursComponent implements OnInit {
       }
     );
     this.fournisseurService.getAll();
+  }
+
+  onSelect(fournisseur: Fournisseur) {
+    this.data = fournisseur;
+    this.dialogRef.close({ event: 'close', data: fournisseur });
   }
 
 }

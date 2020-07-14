@@ -6,30 +6,30 @@
         </div>
         <div class="content">
                 <h4 class="title">Commande</h4>
-                <form>
+                <form [formGroup]="commandeForm" (submit)="onSubmitCommande()">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>N° Commande</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="numeroCommande">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Date Commande</label>
-                                <input type="date" class="form-control">
+                                <input type="date" class="form-control" formControlName="dateCommande">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Date Arrivée</label>
-                                <input type="date" class="form-control">
+                                <input type="date" class="form-control" formControlName="dateArrive">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Magasin</label>
-                                <select class="form-control">
+                                <select class="form-control" formControlName="magasins">
                                     <option *ngFor="let item of magasins;" value="item">
                                         {{ item.nomMagasin }}
                                     </option>
@@ -40,24 +40,24 @@
                 </form>
                 <!--###################################################################-->
                 <h4 class="title">Fournisseur</h4>
-                <form>
+                <form [formGroup]="fournisseurForm" (submit)="onSubmitFournisseur()">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Code</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="codeFournisseur">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Nom</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="nomFournisseur">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Téléphone</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="telephoneFournisseur">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -69,24 +69,24 @@
                 </form>
                 <!--###################################################################-->
                 <h4 class="title">Article</h4>
-                <form>
+                <form [formGroup]="articleForm" (submit)="onSubmitArticle()">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Réference</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="referenceArticle">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Désignation</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="designationArticle">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>TVA</label>
-                                <input type="text" class="form-control">
+                                <label>TVA %</label>
+                                <input type="text" class="form-control" formControlName="tvaArticle">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -100,51 +100,39 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Quantité</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="quantiteArticle" (keyup)="onQuantite()">
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <input type="radio" style="float: right;">
-                        </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label>Prix HT</label>
-                                <input type="number" class="form-control">
+                                <label>
+                                    Prix HT &nbsp;&nbsp;
+                                    <input type="radio" style="float: right;">
+                                </label>
+                                <input type="number" class="form-control" formControlName="prixHTArticle">
                             </div>
                         </div>
-                        <div class="col-md-1">
-                             <input type="radio" style="float: right;">
-                        </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label>Prix TTC</label>
-                                <input type="number" class="form-control">
+                                <label>
+                                    Prix TTC &nbsp;&nbsp;
+                                    <input type="radio" style="float: right;">
+                                </label>
+                                <input type="number" class="form-control" formControlName="prixTTCArticle">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Montant Total</label>
-                                <input type="number" class="form-control">
+                                <input type="number" class="form-control" formControlName="montantTotalArticle">
                             </div>
                         </div>
                     </div>
                 </form>
                 <!--###################################################################-->
-                <div class="row">
-                    <button class="btn btn-danger">
-                        Détail Article
-                    </button>
-
-                    <button class="btn btn-danger">
+                <div class="row text-center">
+                    <button class="btn btn-danger btn-lg">
                         Valider
-                    </button>
-
-                    <button class="btn btn-danger">
-                        Nouveau
-                    </button>
-
-                    <button class="btn btn-danger">
-                        Supprimer
                     </button>
                 </div>
 
