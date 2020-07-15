@@ -1,7 +1,7 @@
-import { Article } from "./Article.models";
-import { Commande } from "./Commande.models";
+import { Article } from './Article.models';
+import { Commande } from './Commande.models';
 
-export interface ArticleXCommande {
+export class ArticleXCommande {
     id: number;
     idArticle: number;
     idCommande: number;
@@ -16,4 +16,6 @@ export interface ArticleXCommande {
     prixTtc: number | null;
     idArticleNavigation: Article;
     idCommandeNavigation: Commande;
+
+    constructor() {}
 }

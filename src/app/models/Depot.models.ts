@@ -1,6 +1,6 @@
 import { Magasin } from "./Magasin.models";
 
-export interface Depot {
+export class Depot {
     idDepot: number;
     idVille: number | null;
     isMagasin: boolean | null;

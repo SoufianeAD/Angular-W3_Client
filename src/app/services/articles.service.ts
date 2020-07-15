@@ -28,4 +28,12 @@ export class ArticlesService {
       }
     );
   }
+
+  findByRef(ref: string): Article {
+    return this.articles.find(e => e.refArticle === ref);
+  }
+
+  findById(id: number): Article {
+    return this.articles.find(e => e.idArticle === id);
+  }
 }

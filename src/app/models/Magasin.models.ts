@@ -1,7 +1,7 @@
 import { Commande } from "./Commande.models";
 import { Depot } from "./Depot.models";
 
-export interface Magasin {
+export class Magasin {
     idMagasin: number;
     idDepot: number | null;
     idVille: number | null;

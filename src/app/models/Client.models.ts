@@ -1,7 +1,7 @@
 import { Commande } from "./Commande.models";
 import { Familleclient } from "./Familleclient.models";
 
-export interface Client {
+export class Client {
     idClient: number;
     idFamilleClient: number | null;
     refClt: string;

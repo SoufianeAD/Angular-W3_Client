@@ -10,6 +10,9 @@ import {Fournisseur} from '../../models/Fournisseur.models';
 import {Article} from '../../models/Article.models';
 import {TvaService} from '../../services/tva.service';
 import {CommandesService} from '../../services/commandes.service';
+import {Commande} from '../../models/Commande.models';
+import {ArticleXCommande} from '../../models/ArticleXCommande.models';
+import {ArticlesService} from '../../services/articles.service';
 
 @Component({
   selector: 'app-saisie-commande-fournisseur',
@@ -24,9 +27,12 @@ export class SaisieCommandeFournisseurComponent implements OnInit {
   commandeForm: FormGroup;
   fournisseurForm: FormGroup;
   articleForm: FormGroup;
+  recapForm: FormGroup;
+  commande: Commande;
 
   constructor(public magasinService: MagasinsService,
               public commandeService: CommandesService,
+              public articleService: ArticlesService,
               public tvaService: TvaService,
               private dialog: MatDialog) { }
 
@@ -45,8 +51,7 @@ export class SaisieCommandeFournisseurComponent implements OnInit {
 
   init() {
     this.commandeForm = new FormGroup({
-      numeroCommande: new FormControl(
-          this.commandeService.findLast() !== undefined ? this.commandeService.findLast().idCommande + 1 : 1),
+      numeroCommande: new FormControl(''),
       dateCommande: new FormControl(''),
       dateArrive: new FormControl(''),
       magasins: new FormControl(this.magasins),
@@ -67,6 +72,13 @@ export class SaisieCommandeFournisseurComponent implements OnInit {
       prixTTCArticle: new FormControl(''),
       montantTotalArticle: new FormControl('')
     });
+
+    this.recapForm = new FormGroup({
+      totalHT: new FormControl(''),
+      totalTVA: new FormControl(''),
+      totalTTC: new FormControl(''),
+      remarque: new FormControl('')
+    })
   }
 
   onArticles() {
@@ -92,10 +104,10 @@ export class SaisieCommandeFournisseurComponent implements OnInit {
       referenceArticle: article.refArticle,
       designationArticle: article.designation,
       tvaArticle: this.tvaService.findById(article.idTva).tauxTva,
-      quantiteArticle: '',
+      quantiteArticle: '1',
       prixHTArticle: article.prixVenteArticleHt,
-      prixTTCArticle: article.prixAchatTtc,
-      montantTotalArticle: ''
+      prixTTCArticle: article.prixVenteArticleTtc,
+      montantTotalArticle: article.prixAchatTtc
     });
   }
 
@@ -127,13 +139,38 @@ export class SaisieCommandeFournisseurComponent implements OnInit {
     this.articleForm.patchValue({montantTotalArticle: montant});
   }
 
-  onSubmitCommande() {
+  onSubmit() {
+    if (this.commande === undefined) {
+      this.commandeForm.patchValue({numeroCommande:
+            this.commandeService.findLast() !== undefined ? this.commandeService.findLast().idCommande + 1 : 1})
+      this.commande = new Commande();
+      this.commande.numCommande = this.commandeForm.get('numeroCommande').value;
+      this.commande.dateCommande = this.commandeForm.get('dateCommande').value;
+      this.commande.idMagasin =  this.commandeForm.get('magasins').value;
+      this.commande.articleXCommande = [];
+    }
+    const articleXCommande = new ArticleXCommande();
+    articleXCommande.idArticle = this.articleService.findByRef(this.articleForm.get('referenceArticle').value).idArticle;
+    articleXCommande.quantiteCommandee = +this.articleForm.get('quantiteArticle').value;
+    articleXCommande.designation = this.articleForm.get('designationArticle').value;
+    articleXCommande.idCommande = this.commande.numCommande;
+    articleXCommande.prix = +this.articleForm.get('prixTTCArticle').value;
+    articleXCommande.prixTtc = +this.articleForm.get('montantTotalArticle').value;
+    articleXCommande.tauxTva = +this.articleForm.get('tvaArticle').value;
+    articleXCommande.prix = +this.articleForm.get('montantTotalArticle').value;
+    this.commande.articleXCommande.push(articleXCommande);
+    // montant total
+    let total = 0;
+    this.commande.articleXCommande.forEach( e => total +=  e.prix)
+    this.recapForm.patchValue({totalTTC: total});
   }
 
-  onSubmitFournisseur() {
-  }
-
-  onSubmitArticle() {
+  onSave() {
+    if (this.commande !== undefined) {
+      this.commande.remarque = this.recapForm.get('remarque').value;
+    }
+    console.log(JSON.stringify(this.commande));
+    this.commandeService.post(new Commande());
   }
 
 }

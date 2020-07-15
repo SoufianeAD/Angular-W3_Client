@@ -1,6 +1,6 @@
 import { Article } from "./Article.models";
 
-export interface Tva {
+export class Tva {
     idTva: number;
     tauxTva: number | null;
     codeTva: string;

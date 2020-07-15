@@ -1,8 +1,8 @@
-import { ArticleXCommande } from "./ArticleXCommande.models";
-import { Client } from "./Client.models";
-import { Magasin } from "./Magasin.models";
+import { ArticleXCommande } from './ArticleXCommande.models';
+import { Client } from './Client.models';
+import { Magasin } from './Magasin.models';
 
-export interface Commande {
+export class Commande {
     idCommande: number;
     idDevis: number | null;
     idClient: number | null;

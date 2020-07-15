@@ -1,6 +1,6 @@
 import { Sousfamillearticle } from "./Sousfamillearticle.models";
 
-export interface Famillearticle {
+export class Famillearticle {
     idFamilleArticle: number;
     libelleFamArticle: string;
     description: string;

@@ -1,6 +1,6 @@
 import { Client } from "./Client.models";
 
-export interface Familleclient {
+export class Familleclient {
     idFamilleClient: number;
     libelleFamilleClt: string;
     dateCreation: string | null;

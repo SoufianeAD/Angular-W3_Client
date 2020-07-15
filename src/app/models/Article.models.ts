@@ -1,8 +1,8 @@
-import { Sousfamillearticle } from "./Sousfamillearticle.models";
-import { Tva } from "./Tva.models";
-import { ArticleXCommande } from "./ArticleXCommande.models";
+import { Sousfamillearticle } from './Sousfamillearticle.models';
+import { Tva } from './Tva.models';
+import { ArticleXCommande } from './ArticleXCommande.models';
 
-export interface Article {
+export class Article {
     idArticle: number;
     idTva: number | null;
     idFamilleArticle: number | null;

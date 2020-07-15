@@ -32,7 +32,7 @@ export class CommandesService {
   }
 
   post(commande: Commande) {
-    this.http.post(environment.apiURL + 'commandes', commande).subscribe(
+    this.http.post<any>(environment.apiURL + 'commandes', commande).subscribe(
         (result) => {
           console.log(JSON.stringify(result));
         }, (error) => {
