@@ -20,10 +20,14 @@ export class ListFournisseursComponent implements OnInit {
 
   ngOnInit(): void {
     // Fournisseurs
+    this.refresh();
+  }
+
+  refresh() {
     this.fournisseurSubscription = this.fournisseurService.fournisseursSubject.subscribe(
-      (fournisseurs: Fournisseur[]) => {
-        this.fournisseurs = fournisseurs;
-      }
+        (fournisseurs: Fournisseur[]) => {
+          this.fournisseurs = fournisseurs;
+        }
     );
     this.fournisseurService.getAll();
   }
@@ -33,4 +37,20 @@ export class ListFournisseursComponent implements OnInit {
     this.dialogRef.close({ event: 'close', data: fournisseur });
   }
 
+  onSearch() {
+    const searchKey = (document.getElementById('searchInput') as HTMLInputElement).value.toLowerCase();
+    if (searchKey === '') {
+      this.refresh();
+    } else {
+      this.fournisseurs.forEach(
+          e => {
+            if (!JSON.stringify(e).toString().toLowerCase().includes(searchKey)) {
+              const index = this.fournisseurs.indexOf(e);
+              this.fournisseurs.splice(index, 1);
+            }
+          }
+      );
+
+    }
+  }
 }
