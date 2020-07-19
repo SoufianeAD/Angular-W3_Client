@@ -29,4 +29,8 @@ export class MagasinsService {
     );
   }
 
+  findById(id: number): Magasin {
+    return this.magasins.find(e => e.idMagasin === id);
+  }
+
 }

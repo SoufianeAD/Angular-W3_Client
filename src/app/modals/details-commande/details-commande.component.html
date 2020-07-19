@@ -1,0 +1,45 @@
+<mat-dialog-content class="mat-typography">
+    <hr/>
+    <div class="mat-dialog-title">
+        <h2>Liste des Articles: commande-id = {{data.commande.idCommande}}</h2>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Search</label>
+                <input type="text" class="form-control" id="searchInput" (keyup)="onSearch()">
+            </div>
+        </div>
+    </div>
+    <div class="main-content" style="margin-top: 2%;">
+        <div class="card">
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Désignation</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of articleXcommandes;">
+                        <td>{{item.idArticle}}</td>
+                        <td>{{item.designation}}</td>
+                        <td>{{item.quantiteCommandee}}</td>
+                        <td>{{item.prix}}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="onDelete(item)">
+                                <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

@@ -18,6 +18,8 @@ import { FournisseursService } from './services/fournisseurs.service';
 import { ListArticlesComponent } from './modals/list-articles/list-articles.component';
 import { ListFournisseursComponent } from './modals/list-fournisseurs/list-fournisseurs.component';
 import { MaterialModule } from './material/material.module';
+import { ListCommandesComponent } from './admin-components/list-commandes/list-commandes.component';
+import { DetailsCommandeComponent } from './modals/details-commande/details-commande.component';
 
 @NgModule({
   imports: [
@@ -37,6 +39,8 @@ import { MaterialModule } from './material/material.module';
     AdminLayoutComponent,
     ListArticlesComponent,
     ListFournisseursComponent,
+    ListCommandesComponent,
+    DetailsCommandeComponent,
   ],
   providers: [
     MagasinsService,
@@ -45,8 +49,9 @@ import { MaterialModule } from './material/material.module';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ListArticlesComponent,
-    ListFournisseursComponent
+      ListArticlesComponent,
+      ListFournisseursComponent,
+      DetailsCommandeComponent
   ]
 })
 export class AppModule { }

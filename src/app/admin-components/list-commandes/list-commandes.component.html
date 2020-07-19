@@ -1,0 +1,54 @@
+<div class="main-content">
+    <div class="card">
+        <div class="header">
+            <h3 class="title">Liste des commandes</h3>
+            <hr/>
+        </div>
+        <div class="container" style="margin-bottom: 0;">
+            <a routerLink="/saisie-commande-fournisseur" class="btn btn-danger">
+                <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Nouvelle commande
+            </a>
+        </div>
+    <div class="main-content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Search</label>
+                    <input type="text" class="form-control" id="searchInput" (keyup)="onSearch()">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id Commande</th>
+                        <th>Numero Commande</th>
+                        <th>Date Création</th>
+                        <th>Remarque</th>
+                        <th>Magasin</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of commandes;"  (click)="onDetails(item)">
+                        <td>{{item.idCommande}}</td>
+                        <td>{{item.numCommande}}</td>
+                        <td>{{item.dateCreation | date}}</td>
+                        <td>{{item.remarque}}</td>
+                        <td *ngIf="magasinService.findById(item.idMagasin) !== undefined">{{magasinService.findById(item.idMagasin).nomMagasin}}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="onDelete(item)">
+                                <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

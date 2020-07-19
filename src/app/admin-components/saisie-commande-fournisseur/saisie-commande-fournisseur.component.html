@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label>Magasin</label>
                                 <select class="form-control" formControlName="magasins">
-                                    <option *ngFor="let item of magasins;" [ngValue]="item">
+                                    <option *ngFor="let item of magasins;" [ngValue]="item.idMagasin">
                                         {{ item.nomMagasin }}
                                     </option>
                                 </select>
@@ -86,7 +86,11 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>TVA %</label>
-                                <input type="text" class="form-control" formControlName="tvaArticle">
+                                <select class="form-control" formControlName="tvaArticle" (change)="onTVA()">
+                                    <option selected value="7">7</option>
+                                    <option value="14">14</option>
+                                    <option value="20">20</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -105,19 +109,13 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>
-                                    Prix HT &nbsp;&nbsp;
-                                    <input type="radio" style="float: right;">
-                                </label>
+                                <label>Prix HT</label>
                                 <input type="number" class="form-control" formControlName="prixHTArticle">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>
-                                    Prix TTC &nbsp;&nbsp;
-                                    <input type="radio" style="float: right;">
-                                </label>
+                                <label>Prix TTC</label>
                                 <input type="number" class="form-control" formControlName="prixTTCArticle">
                             </div>
                         </div>
@@ -143,22 +141,28 @@
                             <tr>
                                 <th>Réf Article</th>
                                 <th>Désignation</th>
-                                <th>Quantité</th>
                                 <th>Prix HT</th>
                                 <th>TVA</th>
                                 <th>Prix TTC</th>
+                                <th>Quantité</th>
                                 <th>Montant TTC</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody *ngIf="commande !== undefined">
                             <tr *ngFor="let item of commande.articleXCommande;">
-                                <td>{{articleService.findById(item.idArticle).refArticle}}</td>
+                                <td *ngIf="articleService.findById(item.idArticle).refArticle !== undefined">{{articleService.findById(item.idArticle).refArticle}}</td>
                                 <td style="max-width: 20%;">{{item.designation}}</td>
-                                <td>{{item.quantiteCommandee}}</td>
-                                <td>{{articleService.findById(item.idArticle).prixVenteArticleHt}}</td>
-                                <td>{{item.tauxTva}} %</td>
+                                <td>{{item.quantiteLivree}}</td>
+                                <td>{{(articleService.findById(item.idArticle).prixVenteArticleTtc - item.quantiteLivree).toFixed(2)}}</td>
                                 <td>{{articleService.findById(item.idArticle).prixVenteArticleTtc}}</td>
+                                <td>{{item.quantiteCommandee}}</td>
                                 <td>{{item.prix}}</td>
+                                <td>
+                                    <button class="btn" (click)="onDeleteArticle(item)">
+                                        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

@@ -32,12 +32,20 @@ export class CommandesService {
   }
 
   post(commande: Commande) {
-    this.http.post<any>(environment.apiURL + 'commandes', commande).subscribe(
-        (result) => {
-          console.log(JSON.stringify(result));
-        }, (error) => {
-          console.log(JSON.stringify(error));
-        }
-    );
+    return this.http.post<any>(environment.apiURL + 'commandes', commande);
+  }
+
+  put(commande: Commande) {
+      return this.http.put(environment.apiURL + 'commandes/' + commande.idCommande, commande);
+  }
+
+  delete(commande: Commande) {
+      this.http.delete(environment.apiURL + 'delete/' + commande.idCommande).subscribe(
+          (result) => {
+              console.log('Delete commande ok!');
+          }, (error) => {
+              console.log('Error delete commande!' + JSON.stringify(error));
+          }
+      );
   }
 }
