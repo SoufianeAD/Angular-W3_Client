@@ -20,6 +20,7 @@ import { ListFournisseursComponent } from './modals/list-fournisseurs/list-fourn
 import { MaterialModule } from './material/material.module';
 import { ListCommandesComponent } from './admin-components/list-commandes/list-commandes.component';
 import { DetailsCommandeComponent } from './modals/details-commande/details-commande.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { DetailsCommandeComponent } from './modals/details-commande/details-comm
     ListFournisseursComponent,
     ListCommandesComponent,
     DetailsCommandeComponent,
+    LoginComponent,
   ],
   providers: [
     MagasinsService,

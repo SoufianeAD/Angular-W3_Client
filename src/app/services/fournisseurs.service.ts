@@ -28,4 +28,12 @@ export class FournisseursService {
       }
     );
   }
+
+  post(fournisseur: Fournisseur) {
+    return this.http.post<Fournisseur>(environment.apiURL + 'fournisseurs', fournisseur);
+  }
+
+  getList() {
+    return this.fournisseurs;
+  }
 }

@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="card">
+        <div class="header">
+            <h3 class="title">Liste des Fournisseurs</h3>
+            <hr/>
+        </div>
+        <div class="container" style="margin-bottom: 0;">
+            <a routerLink="/add-fournisseur" class="btn btn-danger">
+                <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Nouveau Fournisseur
+            </a>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Search</label>
+                        <input type="text" class="form-control" id="searchInput" (keyup)="onSearch()">
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id Fournisseur</th>
+                            <th>Nom</th>
+                            <th>Téléphone</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of fournisseurs;">
+                            <td>{{item.idFournisseur}}</td>
+                            <td>{{item.nom}}</td>
+                            <td>{{item.telephone}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="onDelete(item)">
+                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

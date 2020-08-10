@@ -1,0 +1,32 @@
+<div class="main-content">
+    <div class="card">
+        <div class="header">
+            <h3 class="title">Liste des Utilisateurs</h3>
+            <hr/>
+        </div>
+        <div class="container" style="margin-bottom: 0;">
+            <a routerLink="/add-user" class="btn btn-danger">
+                <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Nouveau Utilisateur
+            </a>
+        </div>
+        <div class="main-content container">
+            <div class="card card-user col-md-3" *ngFor="let item of users;"
+                 style="height: 300px; margin-top: 20px; margin-right: 10px;">
+                <div class="content" style="margin-top: 80px;">
+                    <div class="author" style="margin-bottom: 10px;">
+                        <a href="#">
+                            <img class="avatar border-gray" src="https://www.herbeumont.be/macommune/vie-politique/conseil-communal/img/no-profile-image-png.png" alt="..."/>
+
+                            <h4 class="title">{{ item.email }}<br />
+                                <small>{{ item.password }}</small>
+                            </h4>
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
