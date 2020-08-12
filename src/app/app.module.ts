@@ -21,6 +21,7 @@ import { MaterialModule } from './material/material.module';
 import { ListCommandesComponent } from './admin-components/list-commandes/list-commandes.component';
 import { DetailsCommandeComponent } from './modals/details-commande/details-commande.component';
 import { LoginComponent } from './login/login.component';
+import { ListClientsComponent } from './admin-components/list-clients/list-clients.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { LoginComponent } from './login/login.component';
     ListCommandesComponent,
     DetailsCommandeComponent,
     LoginComponent,
+
   ],
   providers: [
     MagasinsService,

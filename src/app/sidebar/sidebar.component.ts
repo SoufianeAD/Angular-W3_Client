@@ -8,17 +8,12 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
+    { path: '/statistics', title: 'Statistics',  icon: 'pe-7s-graph', class: '' },
     { path: '/list-commandes', title: 'Commandes',  icon: 'pe-7s-note2', class: '' },
     { path: '/list-fournisseur', title: 'Fournisseurs',  icon: 'pe-7s-note2', class: '' },
+    { path: '/list-articles', title: 'Articles',  icon: 'pe-7s-note2', class: '' },
+    { path: '/list-clients', title: 'Clients',  icon: 'pe-7s-note2', class: '' },
     { path: '/list-user', title: 'Users',  icon: 'pe-7s-note2', class: '' },
-    { path: '/dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '' },
-    { path: '/user', title: 'User Profile',  icon: 'pe-7s-user', class: '' },
-    { path: '/table', title: 'Table List',  icon: 'pe-7s-note2', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'pe-7s-news-paper', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'pe-7s-science', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'pe-7s-map-marker', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'pe-7s-bell', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'pe-7s-rocket', class: 'active-pro' },
 ];
 
 @Component({

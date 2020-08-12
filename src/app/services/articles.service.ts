@@ -36,4 +36,9 @@ export class ArticlesService {
   findById(id: number): Article {
     return this.articles.find(e => e.idArticle === id);
   }
+
+  count() {
+    return this.http.get<Article[]>( environment.apiURL + 'articles');
+  }
+
 }

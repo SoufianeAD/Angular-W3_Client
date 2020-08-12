@@ -36,4 +36,8 @@ export class FournisseursService {
   getList() {
     return this.fournisseurs;
   }
+
+  count() {
+    return this.http.get<Fournisseur[]>(environment.apiURL + 'fournisseurs');
+  }
 }

@@ -21,6 +21,10 @@ import {AddFournisseurComponent} from '../../admin-components/add-fournisseur/ad
 import {ListFournisseurComponent} from '../../admin-components/list-fournisseur/list-fournisseur.component';
 import {ListUserComponent} from '../../admin-components/list-user/list-user.component';
 import {AddUserComponent} from '../../admin-components/add-user/add-user.component';
+import {StatisticsComponent} from '../../admin-components/statistics/statistics.component';
+import {ListClientsComponent} from '../../admin-components/list-clients/list-clients.component';
+import {ListArticlesComponent} from '../../admin-components/list-articles/list-articles.component';
+import {MaterialModule} from '../../material/material.module';
 
 
 @NgModule({
@@ -30,7 +34,8 @@ import {AddUserComponent} from '../../admin-components/add-user/add-user.compone
         FormsModule,
         LbdModule,
         NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MaterialModule
     ],
   declarations: [
     HomeComponent,
@@ -46,6 +51,9 @@ import {AddUserComponent} from '../../admin-components/add-user/add-user.compone
       ListFournisseurComponent,
       ListUserComponent,
       AddUserComponent,
+      StatisticsComponent,
+      ListClientsComponent,
+      ListArticlesComponent
   ]
 })
 

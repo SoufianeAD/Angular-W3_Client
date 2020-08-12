@@ -48,4 +48,8 @@ export class CommandesService {
           }
       );
   }
+
+  count() {
+      return this.http.get<Commande[]>(environment.apiURL + 'commandes');
+  }
 }

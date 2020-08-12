@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card border-info mx-sm-1 p-3" style="padding: 5%;">
+                    <div class="text-center"><h2 style="border-bottom: 1px solid lightgray;">Commandes</h2></div>
+                    <div class="text-center mt-2"><h1>{{commandeCount}}</h1></div>
+                    <div class="text-center mt-2">
+                        <a routerLink="/list-commandes"><button class="btn btn-danger"  style="margin-bottom: 5%;">Commandes</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-info mx-sm-1 p-3" style="padding: 5%;">
+                    <div class="text-center mt-3"><h2 style="border-bottom: 1px solid lightgray;">Fournisseurs</h2></div>
+                    <div class="text-center mt-2"><h1>{{fournisseurCount}}</h1></div>
+                    <div class=" text-center mt-2">
+                        <a routerLink="/list-fournisseur"><button class="btn btn-danger" style="margin-bottom: 5%;">Fournisseurs</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-info mx-sm-1 p-3" style="padding: 5%;">
+                    <div class="text-center mt-3"><h2 style="border-bottom: 1px solid lightgray;">Articles</h2></div>
+                    <div class="text-center mt-2"><h1>{{articleCount}}</h1></div>
+                    <div class="text-center mt-2">
+                        <a routerLink="/list-articles"><button class="btn btn-danger" style="margin-bottom: 5%;">Articles</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-info mx-sm-1 p-3" style="padding: 5%;">
+                    <div class="text-center mt-3"><h2 style="border-bottom: 1px solid lightgray;">Clients</h2></div>
+                    <div class="text-center mt-2"><h1>{{clientCount}}</h1></div>
+                    <div class="text-center mt-2">
+                        <a routerLink="/list-clients"><button class="btn btn-danger" style="margin-bottom: 5%;">Clients</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <lbd-chart
+                        [title]="'Commandes par mois'"
+                        [chartType]="hoursChartType"
+                        [chartData]="hoursChartData"
+                        [chartOptions]="hoursChartOptions"
+                        [chartResponsive]="hoursChartResponsive"
+                        [legendItems]="hoursChartLegendItems"
+                        [withHr]="true"
+                        [footerIconClass]="'fa fa-pie-chart'"
+                        [footerText]="'Commandes statistics'">
+                </lbd-chart>
+            </div>
+        </div>
+    </div>
+</div>

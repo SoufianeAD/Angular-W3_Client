@@ -1,0 +1,45 @@
+<div class="main-content">
+    <div class="card">
+        <div class="header">
+            <h3 class="title">Liste des Clients</h3>
+            <hr/>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Search</label>
+                        <input type="text" class="form-control" id="searchInput" (keyup)="onSearch()">
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>Réf Client</th>
+                            <th>Nom Client</th>
+                            <th>Téléphone</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of clients;">
+                            <td>{{item.refClt}}</td>
+                            <td>{{item.nomClient}}</td>
+                            <td>{{item.numTele}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="onDelete(item)">
+                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <mat-spinner *ngIf="clients.length === 0"></mat-spinner>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

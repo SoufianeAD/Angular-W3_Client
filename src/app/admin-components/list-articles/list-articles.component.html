@@ -1,0 +1,49 @@
+<div class="main-content">
+    <div class="card">
+        <div class="header">
+            <h3 class="title">Liste des Articles</h3>
+            <hr/>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Search</label>
+                        <input type="text" class="form-control" id="searchInput" (keyup)="onSearch()">
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>Réf Article</th>
+                            <th>Désignation</th>
+                            <th>Prix Achat</th>
+                            <th>Prix Vente</th>
+                            <th>Prix Vente Min</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of articles;">
+                            <td>{{item.refArticle}}</td>
+                            <td>{{item.designation}}</td>
+                            <td>{{item.prixAchatTtc}}</td>
+                            <td>{{item.prixVenteArticleTtc}}</td>
+                            <td>{{item.prixMinTtc}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="onDelete(item)">
+                                    <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <mat-spinner *ngIf="articles.length === 0"></mat-spinner>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,7 @@ export class LoginService {
   logIn(email: string, password: string) {
     this.userService.getAll();
     const user = this.userService.findByEmail(email);
-    if (user !== undefined && user !== null) {
+    if (user !== undefined && user !== null && user.password === password) {
       localStorage.setItem('login', user.email);
       this.router.navigate(['/saisie-commande-fournisseur'])
     }

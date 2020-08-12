@@ -10,6 +10,7 @@ import {LoginService} from '../services/login.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  loginFailed: string;
 
   constructor(public loginService: LoginService) { }
 
@@ -22,5 +23,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.loginService.logIn(this.loginForm.get('email').value, this.loginForm.get('password').value);
+    this.loginFailed = 'Login Failed! Email ou Mot de passe incorrect!'
   }
 }

@@ -14,6 +14,9 @@ import {AddFournisseurComponent} from '../../admin-components/add-fournisseur/ad
 import {ListFournisseurComponent} from '../../admin-components/list-fournisseur/list-fournisseur.component';
 import {ListUserComponent} from '../../admin-components/list-user/list-user.component';
 import {AddUserComponent} from '../../admin-components/add-user/add-user.component';
+import {StatisticsComponent} from '../../admin-components/statistics/statistics.component';
+import {ListArticlesComponent} from '../../admin-components/list-articles/list-articles.component';
+import {ListClientsComponent} from '../../admin-components/list-clients/list-clients.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
@@ -30,4 +33,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'list-fournisseur', component: ListFournisseurComponent },
     { path: 'list-user', component: ListUserComponent },
     { path: 'add-user', component: AddUserComponent },
+    { path: 'statistics', component: StatisticsComponent},
+    { path: 'list-articles', component: ListArticlesComponent},
+    { path: 'list-clients', component: ListClientsComponent},
 ];
